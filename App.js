@@ -41,6 +41,7 @@ function MyStack() {
         headerTintColor: "white",
         headerTitleAlign: "center",
         headerStyle: {backgroundColor: "#00B2FF"},
+        headerTransparent: 'true',
       }}
       />
       <Stack.Screen name="Recuperar" component={Recuperar} 
