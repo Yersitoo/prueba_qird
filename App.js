@@ -11,6 +11,7 @@ import Recuperar from './screens/recuperar';
 import Clases from './screens/clases';
 import Notificaciones from './screens/notificaciones';
 import User from './screens/user';
+import { ScreenStackHeaderBackButtonImage } from 'react-native-screens';
 
 
 
@@ -35,7 +36,8 @@ function MyStack() {
         title: "HOME",
         headerTintColor: "white",
         headerTitleAlign: "center",
-        headerTransparent: 'true',
+        headerTransparent: true,
+        headerShown: false,
       }}
       />
       <Stack.Screen name="Register" component={Register} 
