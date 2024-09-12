@@ -5,7 +5,7 @@ import appFirebase from '../credenciales';
 
 const auth = getAuth(appFirebase);
 
-export default function Recuperar ({navigation}) {
+export default function Recuperar(props) {
   const [email, setEmail] = useState('');
 
   const handleRecuperar = async () => {
@@ -20,7 +20,7 @@ export default function Recuperar ({navigation}) {
     }if (!isError) {
         setTimeout(() => {
           // Código que se ejecutará después del delay
-          navigation.navigate('Login')
+          props.navigation.navigate('Login')
         }, 1000);
       }
   };
