@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native'
+import React, {useState} from 'react';
+import {Text, StyleSheet, View, Image, TouchableOpacity} from 'react-native';
 import img6 from '../assets/img6.png';
 import img7 from '../assets/img7.png';
 import img4 from '../assets/img4.png';
 import img5 from '../assets/img5.png';
 
-export default function Clases (props) {
+export default function Clases ({ navigation }) {
         return(
             <View style={styles.padre} >
                 <View style={styles.container} >
@@ -14,18 +14,18 @@ export default function Clases (props) {
                 </View>
 
                     <View style={styles.barraInferior}>
-                        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Home') }>
+                        <TouchableOpacity style={styles.botonBarra} onPress={() => navigation.navigate('Home') }>
                             <Image source={img6} style={styles.img6} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Clases') }>
+                        <TouchableOpacity style={styles.botonBarra} onPress={() => navigation.navigate('Clases') }>
                             <Image source={img7} style={styles.img7} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('') }>
+                        <TouchableOpacity style={styles.botonBarra} onPress={() => navigation.navigate('') }>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Notificaciones')}>
+                        <TouchableOpacity style={styles.botonBarra} onPress={() => navigation.navigate('Notificaciones')}>
                             <Image source={img4} style={styles.img4} />
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.botonBarra5} onPress={() => props.navigation.navigate('User') }>
+                        <TouchableOpacity style={styles.botonBarra5} onPress={() => navigation.navigate('User') }>
                             <Image source={img5} style={styles.img5} />
                         </TouchableOpacity>
                     </View>

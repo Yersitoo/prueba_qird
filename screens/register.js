@@ -4,7 +4,8 @@ import appFirebase from '../credenciales';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 const auth = getAuth(appFirebase);
 
-export default function Register(props) {
+export default function Register({navigation}) {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nombreCompleto, setNombreCompleto] = useState('');
@@ -13,7 +14,7 @@ export default function Register(props) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       Alert.alert('Registro exitoso', 'Tu cuenta ha sido creada');
-      props.navigation.navigate('Login');
+      navigation.navigate('Login');
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +60,7 @@ export default function Register(props) {
         </View>
 
         <View>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Login')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <Text style={styles.registrarse}>
               Ya tienes cuenta? <Text style={{ color: '#00B2FF', textDecorationLine: 'underline' }}>Iniciar Sesión</Text>
             </Text>

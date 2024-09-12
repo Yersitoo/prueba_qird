@@ -6,8 +6,22 @@ import img2 from '../assets/img2.png';
 import img4 from '../assets/img4.png';
 import img5 from '../assets/img5.png';
 
+//BottomTabBar
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-export default function Home(props) {
+//Screens
+import Register from './register';
+import Home from './home';
+import Recuperar from './recuperar';
+import Clases from './clases';
+import User from './user';
+import Notificaciones from './notificaciones';
+
+const Tab = createBottomTabNavigator();
+
+export default function Home({ navigation }) {
   return (
     <View style={styles.padre}>
       <View style={styles.billetera}>
@@ -23,20 +37,41 @@ export default function Home(props) {
         <Image source={myImage} />
       </View>
       <View style={styles.barraInferior}>
-        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Home') }>
-          <Image source={img1} style={styles.img1} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Clases')}>
-          <Image source={img2} style={styles.img2} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Clases')}>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.botonBarra} onPress={() => props.navigation.navigate('Notificaciones')}>
-        <Image source={img4} style={styles.img4} />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.botonBarra5} onPress={() => props.navigation.navigate('User')}>
-        <Image source={img5} style={styles.img5} />
-        </TouchableOpacity>
+          <NavigationContainer>
+            <Tab.Navigator initialRouteName={homeName}
+            ScreenOptions={({ route }) => ({ 
+              tabBarIcon: ({focused, color, size }) => {
+                let iconName;
+                let rn= route.name;
+
+                if (rn === homeName){
+                  iconName = focused ? 'home' : 'home=outline'
+                } else if (rn === clasesName){
+                  iconName = focused ? 'clases' : 'clases=outline'
+                  } else if (rn === qrName){
+                  iconName = focused ? 'qr' : 'qr=outline'
+                  } else if (rn === notifName){
+                  iconName = focused ? 'notif' : 'notif=outline'
+                  } else if (rn === userName){
+                  iconName = focused ? 'user' : 'user=outline'
+                  }
+                  
+                  return <Ionicons name= {iconName} size={size} color={color} />
+
+              },
+            })}>
+
+            < Tab.Screen name={homeName} component={Home}/>
+            < Tab.Screen name={clasesName} component={Clases}/>
+            < Tab.Screen name={qrName} component={qr}/>
+            < Tab.Screen name={notifName} component={Notificaciones}/>
+            < Tab.Screen name={userName} component={User}/>
+            
+
+            <Tab.Navigator/>
+          </NavigationContainer>
+
+
       </View>
     </View>
   );
